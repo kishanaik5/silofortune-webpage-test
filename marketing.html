@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Dashboard | Silo Fortune</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-icon">🐄</div><span class="nav-logo-text">Silo <span>Fortune</span></span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="marketing.html" class="nav-link active">Marketing</a></li>
+                <li><a href="developers.html" class="nav-link">Developers</a></li>
+                <li><a href="blogs.html" class="nav-link">Blogs</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="hiring.html" class="nav-link">Careers</a></li>
+                <li><a href="founders.html" class="nav-link">Founders</a></li>
+            </ul>
+            <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="page-header-content">
+            <h1 class="page-title">Marketing Dashboard</h1>
+            <p class="page-description">Real-time overview of our marketing performance, team, and outlet network.</p>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <!-- Stats Grid -->
+        <div class="dashboard-section">
+            <h2 class="dashboard-title">📊 Key Metrics</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-label">Team Members</div>
+                    <div class="stat-value" data-value="48">48</div>
+                </div>
+                <div class="stat-card accent">
+                    <div class="stat-icon">🏪</div>
+                    <div class="stat-label">Total Outlets</div>
+                    <div class="stat-value" data-value="156">156</div>
+                </div>
+                <div class="stat-card secondary">
+                    <div class="stat-icon">📈</div>
+                    <div class="stat-label">Sales Growth</div>
+                    <div class="stat-value" data-value="24" data-suffix="%">24%</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🏢</div>
+                    <div class="stat-label">Headquarters</div>
+                    <div class="stat-value" style="font-size: var(--font-size-xl);">Bangalore, India</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Section -->
+        <div class="dashboard-section">
+            <h2 class="dashboard-title">📦 Our Products</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">🐄</div>
+                    <div class="product-content">
+                        <h3 class="product-name">Gau Sampurna Feed</h3>
+                        <p class="product-description">Premium cattle feed for enhanced milk production.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">📱</div>
+                    <div class="product-content">
+                        <h3 class="product-name">AI Health Scanner</h3>
+                        <p class="product-description">AI-powered cattle health monitoring device.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">📊</div>
+                    <div class="product-content">
+                        <h3 class="product-name">Farm Analytics Suite</h3>
+                        <p class="product-description">Complete farm management analytics platform.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">💊</div>
+                    <div class="product-content">
+                        <h3 class="product-name">Cattle Wellness Kit</h3>
+                        <p class="product-description">Essential supplements and health products.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Outlets Table -->
+        <div class="dashboard-section" id="outlets">
+            <h2 class="dashboard-title">🏪 Outlet Network</h2>
+            <div class="data-table-container">
+                <div class="table-header">
+                    <h3 class="table-title">All Outlets</h3>
+                    <div class="table-filters">
+                        <select class="filter-select" data-filter="2">
+                            <option value="all">All Regions</option>
+                            <option value="karnataka">Karnataka</option>
+                            <option value="maharashtra">Maharashtra</option>
+                            <option value="gujarat">Gujarat</option>
+                            <option value="rajasthan">Rajasthan</option>
+                            <option value="punjab">Punjab</option>
+                        </select>
+                        <select class="filter-select" data-filter="4">
+                            <option value="all">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="pending">Pending</option>
+                        </select>
+                        <input type="text" class="search-input" placeholder="Search outlets...">
+                    </div>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Outlet Name</th>
+                            <th>Manager</th>
+                            <th>Region</th>
+                            <th>Monthly Sales</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Silo Agri Hub - Bangalore Central</td>
+                            <td>Rajesh Kumar</td>
+                            <td>Karnataka</td>
+                            <td>₹4,50,000</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>Gau Sampurna Store - Pune</td>
+                            <td>Priya Sharma</td>
+                            <td>Maharashtra</td>
+                            <td>₹3,80,000</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>Farm Solutions Center - Ahmedabad</td>
+                            <td>Amit Patel</td>
+                            <td>Gujarat</td>
+                            <td>₹4,20,000</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>Dairy Excellence - Jaipur</td>
+                            <td>Vikram Singh</td>
+                            <td>Rajasthan</td>
+                            <td>₹2,90,000</td>
+                            <td><span class="status-badge status-pending">Pending</span></td>
+                        </tr>
+                        <tr>
+                            <td>Silo Agri Mart - Ludhiana</td>
+                            <td>Gurpreet Kaur</td>
+                            <td>Punjab</td>
+                            <td>₹3,50,000</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>Cattle Care Hub - Mumbai</td>
+                            <td>Sneha Patil</td>
+                            <td>Maharashtra</td>
+                            <td>₹5,10,000</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>Agri Solutions - Mysore</td>
+                            <td>Venkat Rao</td>
+                            <td>Karnataka</td>
+                            <td>₹2,75,000</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>Farm Fresh Center - Surat</td>
+                            <td>Nikhil Shah</td>
+                            <td>Gujarat</td>
+                            <td>₹3,25,000</td>
+                            <td><span class="status-badge status-pending">Pending</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2026 Silo Fortune Pvt Ltd. All rights reserved.</p>
+                <div class="footer-social"><a href="#" class="social-link">📘</a><a href="#"
+                        class="social-link">🐦</a><a href="#" class="social-link">📸</a></div>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

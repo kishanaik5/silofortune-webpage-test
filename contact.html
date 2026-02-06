@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Silo Fortune</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-icon">🐄</div><span class="nav-logo-text">Silo <span>Fortune</span></span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="marketing.html" class="nav-link">Marketing</a></li>
+                <li><a href="developers.html" class="nav-link">Developers</a></li>
+                <li><a href="blogs.html" class="nav-link">Blogs</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                <li><a href="hiring.html" class="nav-link">Careers</a></li>
+                <li><a href="founders.html" class="nav-link">Founders</a></li>
+            </ul>
+            <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="page-header-content">
+            <h1 class="page-title">Contact Us</h1>
+            <p class="page-description">Get in touch with our team. We'd love to hear from you!</p>
+        </div>
+    </header>
+
+    <section style="background: var(--color-white);">
+        <div class="contact-section">
+            <div class="contact-info">
+                <h2 class="contact-title">About Silo Fortune</h2>
+                <p class="contact-text">At Silo Fortune Pvt Ltd, we are on a mission to revolutionize the dairy and
+                    agriculture industry in India. Through innovative technology, sustainable practices, and
+                    farmer-centric solutions, we empower Indian farmers to achieve long-term success and
+                    profitability.<br><br>Our flagship brand, Gau Sampurna, is dedicated to improving cattle health and
+                    dairy farming efficiency. With cutting-edge AI tools like the AI-Powered Cattle Health Scanner, we
+                    provide farmers with actionable insights to optimize milk production, detect diseases early, and
+                    enhance herd management.</p>
+
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📍</div>
+                        <div class="contact-item-content">
+                            <h4>Headquarters</h4>
+                            <p>Tech Park, Electronic City<br>Bangalore, Karnataka 560100, India</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📞</div>
+                        <div class="contact-item-content">
+                            <h4>Phone</h4>
+                            <p>+91 80 4567 8900<br>Mon-Sat, 9 AM - 6 PM IST</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">✉️</div>
+                        <div class="contact-item-content">
+                            <h4>Email</h4>
+                            <p>info@silofortune.com<br>support@silofortune.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form-container">
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label class="form-label" for="name">Full Name</label>
+                        <input type="text" id="name" class="form-input" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email Address</label>
+                        <input type="email" id="email" class="form-input" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form-input" placeholder="Enter your phone number">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="subject">Subject</label>
+                        <input type="text" id="subject" class="form-input" placeholder="What is this about?" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="message">Message</label>
+                        <textarea id="message" class="form-textarea" placeholder="Type your message here..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary form-submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2026 Silo Fortune Pvt Ltd. All rights reserved.</p>
+                <div class="footer-social"><a href="#" class="social-link">📘</a><a href="#"
+                        class="social-link">🐦</a><a href="#" class="social-link">📸</a></div>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developers | Silo Fortune</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-icon">🐄</div><span class="nav-logo-text">Silo <span>Fortune</span></span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="marketing.html" class="nav-link">Marketing</a></li>
+                <li><a href="developers.html" class="nav-link active">Developers</a></li>
+                <li><a href="blogs.html" class="nav-link">Blogs</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="hiring.html" class="nav-link">Careers</a></li>
+                <li><a href="founders.html" class="nav-link">Founders</a></li>
+            </ul>
+            <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="page-header-content">
+            <h1 class="page-title">Developer Hub</h1>
+            <p class="page-description">Meet our talented engineering team building the future of agri-tech.</p>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <!-- Stats Grid -->
+        <div class="dashboard-section">
+            <h2 class="dashboard-title">💻 Team Overview</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">👨‍💻</div>
+                    <div class="stat-label">Developer Team</div>
+                    <div class="stat-value" data-value="35">35</div>
+                </div>
+                <div class="stat-card accent">
+                    <div class="stat-icon">🚀</div>
+                    <div class="stat-label">Projects Shipped</div>
+                    <div class="stat-value" data-value="127">127</div>
+                </div>
+                <div class="stat-card secondary">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-label">GitHub Stars</div>
+                    <div class="stat-value" data-value="2450">2450</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🌐</div>
+                    <div class="stat-label">Tech Stack</div>
+                    <div class="stat-value" style="font-size: var(--font-size-lg);">AI, ML, IoT, Cloud</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Join Us CTA -->
+        <div class="dashboard-section">
+            <div class="cta-section" style="border-radius: var(--radius-xl);">
+                <div class="cta-content">
+                    <h2 class="cta-title">Join Our Engineering Team</h2>
+                    <p class="cta-text">We're building cutting-edge AI solutions for agriculture. Work on meaningful
+                        problems that impact millions of farmers across India. Remote-friendly, great benefits, and
+                        exciting challenges await!</p>
+                    <a href="hiring.html" class="btn btn-primary">View Open Positions</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Office Location -->
+        <div class="dashboard-section">
+            <h2 class="dashboard-title">📍 Our Offices</h2>
+            <div class="features-grid">
+                <div class="card">
+                    <div class="card-icon">🏢</div>
+                    <h3 class="card-title">Bangalore HQ</h3>
+                    <p class="card-text">Tech Park, Electronic City<br>Bangalore, Karnataka 560100<br>📞 +91 80 4567
+                        8900</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌆</div>
+                    <h3 class="card-title">Mumbai Office</h3>
+                    <p class="card-text">BKC Tech Tower, Floor 12<br>Mumbai, Maharashtra 400051<br>📞 +91 22 4567 8900
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🏛️</div>
+                    <h3 class="card-title">Pune R&D Center</h3>
+                    <p class="card-text">Hinjewadi IT Park, Phase 2<br>Pune, Maharashtra 411057<br>📞 +91 20 4567 8900
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Developer Blogs -->
+        <div class="dashboard-section">
+            <h2 class="dashboard-title">📝 Developer Blog</h2>
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-card-image">🤖</div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-meta"><span>Jan 15, 2026</span><span>AI/ML</span></div>
+                        <h3 class="blog-card-title">Building AI Models for Cattle Disease Detection</h3>
+                        <p class="blog-card-excerpt">How we trained our computer vision models to detect cattle diseases
+                            with 95% accuracy.</p>
+                        <div class="blog-card-author">
+                            <div class="author-avatar">AK</div><span class="author-name">Arun Kumar</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-card-image">📊</div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-meta"><span>Jan 8, 2026</span><span>Data</span></div>
+                        <h3 class="blog-card-title">Scaling Our Data Pipeline to 10M+ Records</h3>
+                        <p class="blog-card-excerpt">Our journey from handling thousands to millions of dairy farm data
+                            points daily.</p>
+                        <div class="blog-card-author">
+                            <div class="author-avatar">PS</div><span class="author-name">Priya Singh</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-card-image">📱</div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-meta"><span>Dec 28, 2025</span><span>Mobile</span></div>
+                        <h3 class="blog-card-title">Building Offline-First Mobile Apps for Rural India</h3>
+                        <p class="blog-card-excerpt">Design patterns for apps that work seamlessly in areas with poor
+                            connectivity.</p>
+                        <div class="blog-card-author">
+                            <div class="author-avatar">RN</div><span class="author-name">Rahul Nair</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2026 Silo Fortune Pvt Ltd. All rights reserved.</p>
+                <div class="footer-social"><a href="#" class="social-link">📘</a><a href="#"
+                        class="social-link">🐦</a><a href="#" class="social-link">📸</a></div>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
