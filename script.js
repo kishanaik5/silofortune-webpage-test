@@ -2,11 +2,11 @@
 // SILO FORTUNE - JavaScript Functionality
 // =====================================================
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Mobile Navigation Toggle
     const navToggle = document.getElementById('navToggle');
     const navMenu = document.getElementById('navMenu');
-    
+
     if (navToggle && navMenu) {
         navToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Smooth Scroll for Anchor Links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function filterTable() {
         const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
         const filters = {};
-        
+
         filterSelects.forEach(select => {
             filters[select.dataset.filter] = select.value.toLowerCase();
         });
@@ -63,13 +63,13 @@ document.addEventListener('DOMContentLoaded', function() {
         tableRows.forEach(row => {
             let show = true;
             const cells = row.querySelectorAll('td');
-            
+
             // Search filter
             if (searchTerm) {
                 const rowText = row.textContent.toLowerCase();
                 if (!rowText.includes(searchTerm)) show = false;
             }
-            
+
             // Dropdown filters
             Object.keys(filters).forEach(filterKey => {
                 if (filters[filterKey] && filters[filterKey] !== 'all') {
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
             });
-            
+
             row.style.display = show ? '' : 'none';
         });
     }
@@ -90,22 +90,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Animate Stats on Scroll
     const observerOptions = { threshold: 0.5, rootMargin: '0px' };
-    
+
     const animateValue = (element, start, end, duration) => {
         const range = end - start;
         const startTime = performance.now();
-        
+
         const updateValue = (currentTime) => {
             const elapsed = currentTime - startTime;
             const progress = Math.min(elapsed / duration, 1);
             const easeOut = 1 - Math.pow(1 - progress, 3);
             const current = Math.floor(start + (range * easeOut));
-            
+
             element.textContent = current.toLocaleString() + (element.dataset.suffix || '');
-            
+
             if (progress < 1) requestAnimationFrame(updateValue);
         };
-        
+
         requestAnimationFrame(updateValue);
     };
 
@@ -124,12 +124,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.stat-card').forEach(card => statsObserver.observe(card));
+    document.querySelectorAll('.stat-card, .stat-group').forEach(card => statsObserver.observe(card));
 
     // Form Submission Handler
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
             alert('Thank you for your message! We will get back to you soon.');
             this.reset();
@@ -139,10 +139,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Card Hover Effects
     const cards = document.querySelectorAll('.card, .blog-card, .team-card, .job-card');
     cards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
+        card.addEventListener('mouseenter', function () {
             this.style.transform = 'translateY(-8px)';
         });
-        card.addEventListener('mouseleave', function() {
+        card.addEventListener('mouseleave', function () {
             this.style.transform = '';
         });
     });
