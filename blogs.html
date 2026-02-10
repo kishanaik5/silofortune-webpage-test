@@ -26,8 +26,8 @@
                 <li><a href="developers.html" class="nav-link">Developers</a></li>
                 <li><a href="blogs.html" class="nav-link active">Blogs</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
-                <li><a href="hiring.html" class="nav-link">Careers</a></li>
-                <li><a href="founders.html" class="nav-link">Founders</a></li>
+                <li><a href="open-positions.html" class="nav-link">Careers</a></li>
+                <li><a href="founders.html" class="nav-link">About Us</a></li>
             </ul>
             <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
         </div>
@@ -40,82 +40,26 @@
         </div>
     </header>
 
-    <section style="background: var(--color-white);">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <div class="blog-grid">
-                <article class="blog-card">
-                    <div class="blog-card-image">🐄</div>
-                    <div class="blog-card-content">
-                        <div class="blog-card-meta"><span>Feb 1, 2026</span><span>Company</span></div>
-                        <h3 class="blog-card-title">How Gau Sampurna is Transforming Dairy Farming in India</h3>
-                        <p class="blog-card-excerpt">A look at how our flagship brand is empowering farmers across 15
-                            states.</p>
-                        <div class="blog-card-author">
-                            <div class="author-avatar">SF</div><span class="author-name">Silo Fortune Team</span>
-                        </div>
-                    </div>
-                </article>
-                <article class="blog-card">
-                    <div class="blog-card-image">🤖</div>
-                    <div class="blog-card-content">
-                        <div class="blog-card-meta"><span>Jan 25, 2026</span><span>Technology</span></div>
-                        <h3 class="blog-card-title">The Science Behind Our AI Cattle Health Scanner</h3>
-                        <p class="blog-card-excerpt">Deep dive into the machine learning models powering our diagnostic
-                            tools.</p>
-                        <div class="blog-card-author">
-                            <div class="author-avatar">AK</div><span class="author-name">Arun Kumar</span>
-                        </div>
-                    </div>
-                </article>
-                <article class="blog-card">
-                    <div class="blog-card-image">🌱</div>
-                    <div class="blog-card-content">
-                        <div class="blog-card-meta"><span>Jan 18, 2026</span><span>Sustainability</span></div>
-                        <h3 class="blog-card-title">Sustainable Dairy Farming: Best Practices Guide</h3>
-                        <p class="blog-card-excerpt">Practical tips for farmers to adopt eco-friendly practices without
-                            sacrificing yield.</p>
-                        <div class="blog-card-author">
-                            <div class="author-avatar">MS</div><span class="author-name">Meera Sharma</span>
-                        </div>
-                    </div>
-                </article>
-                <article class="blog-card">
-                    <div class="blog-card-image">💼</div>
-                    <div class="blog-card-content">
-                        <div class="blog-card-meta"><span>Jan 10, 2026</span><span>Business</span></div>
-                        <h3 class="blog-card-title">Expanding to 100 New Outlets: Our Growth Story</h3>
-                        <p class="blog-card-excerpt">How we scaled our retail network while maintaining quality and
-                            farmer trust.</p>
-                        <div class="blog-card-author">
-                            <div class="author-avatar">VP</div><span class="author-name">Vikram Patel</span>
-                        </div>
-                    </div>
-                </article>
-                <article class="blog-card">
-                    <div class="blog-card-image">📊</div>
-                    <div class="blog-card-content">
-                        <div class="blog-card-meta"><span>Jan 5, 2026</span><span>Data</span></div>
-                        <h3 class="blog-card-title">Data-Driven Decisions in Agriculture</h3>
-                        <p class="blog-card-excerpt">How analytics helps farmers make smarter choices for better
-                            outcomes.</p>
-                        <div class="blog-card-author">
-                            <div class="author-avatar">PS</div><span class="author-name">Priya Singh</span>
-                        </div>
-                    </div>
-                </article>
-                <article class="blog-card">
-                    <div class="blog-card-image">🎯</div>
-                    <div class="blog-card-content">
-                        <div class="blog-card-meta"><span>Dec 28, 2025</span><span>Vision</span></div>
-                        <h3 class="blog-card-title">Our 2026 Vision: Empowering 1 Million Farmers</h3>
-                        <p class="blog-card-excerpt">Our ambitious goals and the roadmap to achieve them in the coming
-                            year.</p>
-                        <div class="blog-card-author">
-                            <div class="author-avatar">RG</div><span class="author-name">Rajesh Gupta</span>
-                        </div>
-                    </div>
-                </article>
+    <!-- Admin Dashboard (Hidden by default) -->
+    <!-- Admin Dashboard (Hidden by default) -->
+    <section class="admin-only"
+        style="background-color: #f0fdf4; padding: 1.5rem 0; border-bottom: 1px solid #dcfce7; display: none;">
+        <div
+            style="max-width: 1200px; margin: 0 auto; padding: 0 1rem; display: flex; flex-direction: column; gap: 1rem; align-items: center;">
+            <h3 style="color: var(--color-primary); margin: 0;">Admin Blog Dashboard</h3>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                <button onclick="window.location.href='blog-form.html'" class="btn btn-primary">POST NEW BLOG</button>
             </div>
+        </div>
+    </section>
+
+    <section style="background: var(--color-white);">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 4rem 1rem;">
+            <div class="blog-grid" id="blogs-container">
+                <!-- Blogs will be loaded here dynamically -->
+                <p style="grid-column: 1/-1; text-align: center;">Loading blogs...</p>
+            </div>
+
         </div>
     </section>
 
@@ -150,8 +94,8 @@
                 <div class="footer-section">
                     <h4 class="footer-title">Company</h4>
                     <ul class="footer-links">
-                        <li><a href="founders.html">Founders</a></li>
-                        <li><a href="hiring.html">Careers</a></li>
+                        <li><a href="founders.html">About Us</a></li>
+                        <li><a href="open-positions.html">Careers</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>

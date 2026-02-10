@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Applicants | Silo Fortune</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .table-container {
+            overflow-x: auto;
+            margin-top: 2rem;
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow-md);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background-color: var(--color-light);
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .resume-link {
+            color: var(--color-accent);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/silo_logo.png" alt="Silo Fortune Logo"
+                    style="height: 50px; width: auto; object-fit: contain;">
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="open-positions.html" class="nav-link">Back to Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="page-header-content">
+            <h1 class="page-title">Job Applicants</h1>
+            <p class="page-description">Review submissions from potential candidates.</p>
+        </div>
+    </header>
+
+    <section style="background: var(--color-light); min-height: 60vh;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 2rem 1rem;">
+            <div id="loading" style="text-align: center;">Loading applicants...</div>
+            <div class="table-container" id="tableContainer" style="display: none;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Job ID</th>
+                            <th>LinkedIn</th>
+                            <th>Resume</th>
+                        </tr>
+                    </thead>
+                    <tbody id="applicantsTableBody">
+                        <!-- Rows will be injected here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-copyright" style="text-align: center;">© 2026 Silo Fortune Pvt Ltd. Admin Portal.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            // 1. Verify Admin Status
+            const token = localStorage.getItem('access_token');
+            if (!token) {
+                alert("Access Denied. Please login as Admin.");
+                window.location.href = 'index.html';
+                return;
+            }
+
+            // 2. Fetch Applicants
+            try {
+                const response = await fetch('http://localhost:8000/api/applicants', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (response.ok) {
+                    const applicants = await response.json();
+                    const tbody = document.getElementById('applicantsTableBody');
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('tableContainer').style.display = 'block';
+
+                    if (applicants.length === 0) {
+                        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">No applicants found.</td></tr>';
+                        return;
+                    }
+
+                    applicants.forEach(app => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                             <td>${app.full_name}</td>
+                             <td>${app.email}</td>
+                             <td>${app.phone}</td>
+                             <td>${app.job_id || 'General'}</td>
+                             <td>${app.linkedin_url ? `<a href="${app.linkedin_url}" target="_blank">View Profile</a>` : '-'}</td>
+                             <td><a href="#" onclick="alert('File implementation pending (S3/Local). Key: ${app.resume_s3_key}')" class="resume-link">Download</a></td>
+                         `;
+                        tbody.appendChild(tr);
+                    });
+                } else {
+                    document.getElementById('loading').innerText = "Failed to load applicants. Unauthorized.";
+                }
+            } catch (error) {
+                console.error(error);
+                document.getElementById('loading').innerText = "Server Error.";
+            }
+        });
+    </script>
+</body>
+
+</html>

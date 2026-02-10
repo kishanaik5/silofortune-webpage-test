@@ -1,0 +1,39 @@
+2026-02-10 13:08:49,673 [INFO] Login attempt for user: silo@gmail.com
+2026-02-10 13:08:49,678 [WARNING] Failed login attempt for user: silo@gmail.com
+2026-02-10 13:08:55,554 [INFO] Login attempt for user: silo@gmail.com
+2026-02-10 13:08:55,555 [WARNING] Failed login attempt for user: silo@gmail.com
+2026-02-10 13:11:47,398 [INFO] Login attempt for user: silo@gmail.com
+2026-02-10 13:11:47,405 [WARNING] Failed login attempt for user: silo@gmail.com
+2026-02-10 13:12:12,837 [INFO] Registration attempt for email: siloo@gmail.com
+2026-02-10 13:12:12,842 [WARNING] (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\Think\AppData\Roaming\Python\Python312\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-02-10 13:14:51,636 [INFO] Registration attempt for email: siloo@gmail.com
+2026-02-10 13:14:51,886 [INFO] New user registered successfully: siloo@gmail.com
+2026-02-10 13:15:16,863 [INFO] Registration attempt for email: siloo@gmail.com
+2026-02-10 13:15:16,863 [WARNING] Registration failed - Email already exists: siloo@gmail.com
+2026-02-10 13:15:35,198 [INFO] Login attempt for user: siloo@gmail.com
+2026-02-10 13:15:35,417 [INFO] Successful login for user: siloo@gmail.com
+2026-02-10 14:41:19,894 [INFO] Login attempt for user: admin@silofortune.com
+2026-02-10 14:41:20,135 [INFO] Successful login for user: admin@silofortune.com
+2026-02-10 14:41:49,296 [INFO] Login attempt for user: admin@silofortune.com
+2026-02-10 14:41:49,522 [INFO] Successful login for user: admin@silofortune.com
+2026-02-10 14:44:59,717 [INFO] Login attempt for user: admin@silofortune.com
+2026-02-10 14:44:59,935 [INFO] Successful login for user: admin@silofortune.com
+2026-02-10 14:58:31,962 [INFO] Login attempt for user: admin@silofortune.com
+2026-02-10 14:58:32,172 [INFO] Successful login for user: admin@silofortune.com
+2026-02-10 15:02:14,655 [INFO] Login attempt for user: admin@silofortune.com
+2026-02-10 15:02:14,885 [INFO] Successful login for user: admin@silofortune.com
+2026-02-10 15:04:48,918 [INFO] Login attempt for user: admin@silofortune.com
+2026-02-10 15:04:49,130 [INFO] Successful login for user: admin@silofortune.com
+2026-02-10 16:24:39,251 [INFO] Login attempt for user: admin@silofortune.com
+2026-02-10 16:24:39,490 [INFO] Successful login for user: admin@silofortune.com
+2026-02-10 16:37:45,915 [INFO] Login attempt for user: admin@silofortune.com
+2026-02-10 16:37:46,144 [INFO] Successful login for user: admin@silofortune.com
+2026-02-10 17:11:17,141 [INFO] Login attempt for user: admin@silofortune.com
+2026-02-10 17:11:17,374 [WARNING] Failed login attempt for user: admin@silofortune.com
+2026-02-10 17:11:19,908 [INFO] Login attempt for user: admin@silofortune.com
+2026-02-10 17:11:20,120 [INFO] Successful login for user: admin@silofortune.com

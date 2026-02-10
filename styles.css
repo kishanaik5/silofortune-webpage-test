@@ -800,78 +800,31 @@ section {
 }
 
 /* =====================================================
-   BLOG CARDS
+   BLOG PAGE (Square Cards Redesign)
    ===================================================== */
 .blog-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: var(--spacing-xl);
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem 1rem;
 }
 
 .blog-card {
     background: var(--color-white);
-    border-radius: var(--radius-xl);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    /* Softer shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
-    box-shadow: var(--shadow-md);
-    transition: all var(--transition-base);
-    border: 1px solid rgba(27, 94, 32, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* Full height of grid cell */
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .blog-card:hover {
     transform: translateY(-5px);
-    box-shadow: var(--shadow-xl);
-}
-
-.blog-card-image {
-    height: 200px;
-    background: var(--gradient-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 60px;
-}
-
-.blog-card-content {
-    padding: var(--spacing-lg);
-}
-
-.blog-card-meta {
-    display: flex;
-    gap: var(--spacing-md);
-    margin-bottom: var(--spacing-sm);
-    font-size: var(--font-size-sm);
-    color: var(--color-gray-500);
-}
-
-.blog-card-title {
-    font-size: var(--font-size-xl);
-    margin-bottom: var(--spacing-sm);
-    transition: color var(--transition-fast);
-}
-
-.blog-card:hover .blog-card-title {
-    color: var(--color-primary);
-}
-
-.blog-card-excerpt {
-    color: var(--color-gray-600);
-    margin-bottom: var(--spacing-md);
-}
-
-.blog-card-author {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-}
-
-.author-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: var(--color-gray-200);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     font-weight: 600;
     color: var(--color-primary);
 }
@@ -1884,6 +1837,26 @@ section {
     align-items: center;
 }
 
+/* WhatsApp Floating Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 70px;
+    /* Increased size */
+    height: 70px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-float img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .slider-btn {
     background: var(--color-white);
     border: 1px solid var(--color-gray-200);
@@ -1922,7 +1895,6 @@ section {
         /* Hide arrows on mobile where touch is better */
     }
 }
-}
 
 .product-card::before {
     content: '';
@@ -1957,4 +1929,215 @@ section {
     color: var(--color-gray-600);
     font-size: 1rem;
     line-height: 1.6;
+}
+
+/* =====================================================
+   AUTH MODAL & LOGIN BUTTON STYLES
+   ===================================================== */
+
+/* Navbar Login Button */
+#authTrigger {
+    margin-left: 1rem;
+    padding: 0.5rem 1.5rem;
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+    font-weight: 500;
+    font-family: var(--font-primary);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    background: transparent;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#authTrigger:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+}
+
+/* Modal Overlay with Glassmorphism */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Slightly darker since blur is gone */
+    /* backdrop-filter: blur(8px); REMOVED as requested */
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Modal Content */
+.modal-content {
+    background: rgba(255, 255, 255, 0.95);
+    margin: 10% auto;
+    padding: 2.5rem;
+    border-radius: var(--radius-xl);
+    width: 90%;
+    max-width: 420px;
+    box-shadow: var(--shadow-xl), 0 0 20px rgba(27, 94, 32, 0.1);
+    position: relative;
+    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Close Button */
+.close-modal {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.5rem;
+    color: var(--color-gray-400);
+    font-size: 1.75rem;
+    font-weight: normal;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+    line-height: 1;
+}
+
+.close-modal:hover {
+    color: var(--color-dark);
+    transform: rotate(90deg);
+}
+
+/* Form Styles inside Modal */
+.modal h2 {
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+    text-align: center;
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.modal .form-subtitle {
+    text-align: center;
+    color: var(--color-gray-500);
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+}
+
+.modal .form-group {
+    margin-bottom: 1.25rem;
+}
+
+.modal .form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--color-gray-700);
+    font-size: 0.9rem;
+}
+
+.modal .form-input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 1.5px solid var(--color-gray-200);
+    border-radius: var(--radius-md);
+    font-family: var(--font-secondary);
+    font-size: 1rem;
+    transition: all 0.2s;
+    background: var(--color-light);
+}
+
+.modal .form-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    background: var(--color-white);
+    box-shadow: 0 0 0 3px rgba(27, 94, 32, 0.1);
+}
+
+.modal .btn-primary {
+    width: 100%;
+    padding: 0.875rem;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    border-radius: var(--radius-md);
+    background: var(--gradient-primary);
+    border: none;
+    cursor: pointer;
+}
+
+.modal .btn-primary:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-1px);
+}
+
+/* Toggle Link */
+.auth-toggle {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--color-gray-600);
+}
+
+.auth-toggle a {
+    color: var(--color-primary);
+    cursor: pointer;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.auth-toggle a:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* =====================================================
+   BACK NAVIGATION (Global)
+   ===================================================== */
+.back-nav {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto 1.5rem auto;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-gray-600);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    background: white;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.back-btn:hover {
+    color: var(--color-primary);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateX(-2px);
 }

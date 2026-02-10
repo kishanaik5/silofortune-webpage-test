@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Positions | Silo Fortune</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/silo_logo.png" alt="Silo Fortune Logo"
+                    style="height: 50px; width: auto; object-fit: contain;">
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="marketing.html" class="nav-link">Marketing</a></li>
+                <li><a href="developers.html" class="nav-link">Developers</a></li>
+                <li><a href="blogs.html" class="nav-link">Blogs</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="open-positions.html" class="nav-link active">Careers</a></li>
+                <li><a href="founders.html" class="nav-link">About Us</a></li>
+            </ul>
+            <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="page-header-content">
+            <h1 class="page-title">Current Openings</h1>
+            <p class="page-description">Find your next role at Silo Fortune.</p>
+
+            <!-- Admin Dashboard (Hidden by default) -->
+            <!-- Admin Dashboard (Hidden by default) -->
+            <div class="admin-only"
+                style="display: none; margin-top: 2rem; padding: 1rem 0; border-top: 1px solid rgba(255,255,255,0.2);">
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <button class="btn btn-primary" onclick="openAddJobModal()">Post New Job</button>
+                    <button class="btn btn-secondary" style="background: white; color: var(--color-primary);"
+                        onclick="window.location.href='admin-applicants.html'">View Applicants</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section style="background: var(--color-light);">
+        <div style="max-width: 900px; margin: 0 auto; padding: 4rem 1rem;">
+            <div id="jobs-container" class="jobs-grid">
+                <!-- Jobs will be loaded here dynamically -->
+                <p style="text-align: center; grid-column: 1/-1;">Loading open positions...</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="assets/silo_logo.png" alt="Silo Fortune Logo"
+                            style="height: 60px; width: auto; object-fit: contain; background: white; padding: 5px; border-radius: 8px;">
+                    </div>
+                    <p class="footer-tagline">Revolutionizing dairy and agriculture in India.</p>
+                    <div class="footer-contact" style="margin-top: 1.5rem;">
+                        <h5 style="color: var(--color-primary); margin-bottom: 0.5rem; font-size: 1.1rem;">Get in touch
+                        </h5>
+                        <p style="margin-bottom: 0.25rem;"><a href="mailto:info@silofortune.com"
+                                style="color: inherit; text-decoration: none;">info@silofortune.com</a></p>
+                        <p style="margin-bottom: 0.25rem;"><a href="tel:18004197848"
+                                style="color: inherit; text-decoration: none;">1800-419-7848</a></p>
+                        <p style="opacity: 0.8; line-height: 1.5;">2nd Floor, 558, 9th Cross Rd,<br>3rd Phase, J. P.
+                            Nagar,<br>Bengaluru, Karnataka 560025</p>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="marketing.html">Marketing</a></li>
+                        <li><a href="developers.html">Developers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="founders.html">About Us</a></li>
+                        <li><a href="open-positions.html">Careers</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Products</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Gau Sampurna</a></li>
+                        <li><a href="#">AI Health Scanner</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2026 Silo Fortune Pvt Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
