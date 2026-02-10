@@ -1730,28 +1730,198 @@ section {
 /* =====================================================
    PRODUCT CARDS (Marketing Page)
    ===================================================== */
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+/* =====================================================
+   PRODUCT CARDS (Marketing Page)
+   ===================================================== */
+.products-slider {
+    display: flex;
+    overflow-x: auto;
     gap: var(--spacing-lg);
-    margin-bottom: var(--spacing-2xl);
+    padding: var(--spacing-md) var(--spacing-xs) var(--spacing-xl) var(--spacing-xs);
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+}
+
+/* Custom Scrollbar for slider */
+.products-slider::-webkit-scrollbar {
+    height: 6px;
+}
+
+.products-slider::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.products-slider::-webkit-scrollbar-thumb {
+    background: var(--color-primary-light);
+    border-radius: 4px;
+}
+
+.products-slider::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary);
 }
 
 .product-card {
-    background: radial-gradient(circle at bottom left, rgba(27, 94, 32, 0.25) 0%, transparent 50%), var(--color-white);
+    background: var(--color-white);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
-    padding: var(--spacing-xl);
+    padding: var(--spacing-lg);
     position: relative;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid rgba(0, 0, 0, 0.05);
-    /* Very subtle border */
+
+    /* Horizontal Slider Layout Properties */
+    /* Horizontal Slider Layout Properties */
+    min-width: 500px;
+    /* Increased card size */
+    max-width: 600px;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-xl);
+    /* Increased gap to push text more to the right */
 }
 
 .product-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-xl);
+}
+
+.product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 5px;
+    background: var(--color-primary);
+    transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.product-card:hover::before {
+    width: 100%;
+}
+
+/* Visual placeholder for the image on the left */
+/* Product image container on the left */
+.product-image-side {
+    width: 180px;
+    /* Increased image size */
+    height: 180px;
+    background: var(--color-light);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.product-image-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Show the whole product nicely */
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image-side img {
+    transform: scale(1.05);
+    /* Gentle zoom on hover */
+}
+
+
+
+.product-content {
+    text-align: left;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-name {
+    font-size: 1.25rem;
+    color: var(--color-secondary);
+    margin-bottom: var(--spacing-xs);
+    font-weight: 700;
+}
+
+.product-description {
+    color: var(--color-gray-600);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: var(--spacing-md);
+}
+
+.product-btn {
+    align-self: flex-start;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.product-btn:hover {
+    background-color: var(--color-primary-dark);
+}
+
+/* Slider Controls */
+.slider-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.slider-btn {
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-200);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    z-index: 10;
+    box-shadow: var(--shadow-md);
+    transition: all 0.2s ease;
+    color: var(--color-primary);
+    font-size: 1.2rem;
+}
+
+.slider-btn:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+    transform: scale(1.1);
+}
+
+.slider-btn.prev {
+    left: -15px;
+}
+
+.slider-btn.next {
+    right: -15px;
+}
+
+@media (max-width: 768px) {
+    .slider-btn {
+        display: none;
+        /* Hide arrows on mobile where touch is better */
+    }
+}
 }
 
 .product-card::before {
