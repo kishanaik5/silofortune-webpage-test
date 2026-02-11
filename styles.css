@@ -106,6 +106,16 @@ body {
     color: var(--color-dark);
     background-color: var(--color-light);
     overflow-x: hidden;
+    /* Prevent horizontal scroll */
+    width: 100%;
+    position: relative;
+    -webkit-text-size-adjust: 100%;
+    /* Prevent iOS text inflation */
+}
+
+html {
+    overflow-x: hidden;
+    width: 100%;
 }
 
 h1,
@@ -2140,4 +2150,330 @@ section {
     color: var(--color-primary);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transform: translateX(-2px);
+}
+
+/* =====================================================
+   MOBILE RESPONSIVENESS
+   ===================================================== */
+/* =====================================================
+   MOBILE RESPONSIVENESS (APP OPTIMIZATION - Refined)
+   ===================================================== */
+@media (max-width: 900px) {
+
+    /* 1. NAVIGATION & HEADER */
+    .nav-toggle {
+        display: flex;
+        z-index: 1001;
+        padding: 0.5rem;
+        /* Larger touch target */
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 85%;
+        max-width: 300px;
+        height: 100vh;
+        background: var(--color-white);
+        flex-direction: column;
+        padding: 5rem 1.5rem 2rem;
+        /* Top padding for close button space */
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1000;
+        overflow-y: auto;
+        /* Allow scrolling if menu is long */
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-link {
+        font-size: 1.1rem;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--color-gray-100);
+        border-radius: 0;
+        width: 100%;
+        display: block;
+        text-align: left;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+        background: transparent;
+        color: var(--color-primary);
+        padding-left: 0.5rem;
+        /* Slide effect */
+    }
+
+    .nav-link.active::after {
+        display: none;
+    }
+
+    /* 2. TYPOGRAPHY SCALING (Clean & Readable) */
+    :root {
+        --font-size-6xl: 2.25rem;
+        /* Smaller Hero Title */
+        --font-size-5xl: 2rem;
+        --font-size-4xl: 1.75rem;
+        --font-size-3xl: 1.5rem;
+        --font-size-xl: 1.15rem;
+        /* Slightly smaller subtitles */
+    }
+
+    body {
+        font-size: 0.95rem;
+        /* Slightly compact body text */
+    }
+
+    /* 3. LAYOUT & GRIDS (No Overlaps) */
+    .hero-container,
+    .features-grid,
+    .team-grid,
+    .contact-section,
+    .stats-grid,
+    .blog-grid,
+    .jobs-grid,
+    .footer-grid,
+    .contact-section .features-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem;
+        width: 100%;
+    }
+
+    /* 4. HERO SECTION (Clean Center) */
+    .hero,
+    .hero-marketing,
+    .hero-developers {
+        background-image: none !important;
+        /* Remove bg image on mobile to prevent scaling issues */
+        background: linear-gradient(180deg, var(--color-light) 0%, #e8f5e9 100%);
+        padding: 7rem 1.5rem 4rem 1.5rem;
+        min-height: auto;
+        text-align: center;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero-container,
+    .hero-marketing .hero-container,
+    .hero-developers .hero-container {
+        grid-template-columns: 1fr !important;
+        gap: 2rem;
+        width: 100%;
+        display: flex;
+        /* Force flex column */
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-content,
+    .hero-marketing .hero-content,
+    .hero-developers .hero-content {
+        align-items: center;
+        width: 100%;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Ensure title wraps correctly */
+    .hero-title {
+        word-wrap: break-word;
+        max-width: 100%;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+        width: 100%;
+        flex-direction: column;
+        /* Stack buttons on very small screens */
+        gap: 1rem;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+        /* Full width buttons */
+        max-width: 300px;
+        /* But not too wide */
+    }
+
+    /* 5. GAU & KISSAN SAMPURNA (Logo First, Clean Stack) */
+    .contact-section {
+        display: flex;
+        flex-direction: column-reverse;
+        padding: 0 1rem;
+        gap: 2.5rem;
+    }
+
+    .hero-image-wrapper {
+        width: 180px;
+        /* Optimal mobile size */
+        height: 180px;
+        margin: 0 auto;
+    }
+
+    .contact-info {
+        padding-right: 0;
+        text-align: center;
+    }
+
+    .contact-info .features-grid>div {
+        justify-content: center;
+        background: white;
+        /* Card-like background for features */
+        padding: 0.75rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+    }
+
+    /* 6. CARDS & ELEMENTS (Touch Friendly) */
+    .card,
+    .job-card,
+    .blog-card,
+    .product-card,
+    .team-card,
+    .contact-form-container {
+        padding: 1.5rem;
+        width: 100%;
+    }
+
+    /* Jobs */
+    .job-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .job-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    .job-meta span {
+        background: var(--color-gray-100);
+        /* Pills for metadata */
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        width: fit-content;
+    }
+
+    /* Buttons & Inputs */
+    .btn,
+    .form-input,
+    .form-textarea,
+    .filter-select,
+    .search-input {
+        min-height: 48px;
+        /* Touch target size */
+        font-size: 16px;
+        /* Prevents iOS zoom */
+    }
+
+    .btn {
+        width: 100%;
+        /* Full width actions */
+    }
+
+    /* 7. FOOTER */
+    .footer-brand {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-links {
+        text-align: center;
+    }
+
+    .footer-links li {
+        margin-bottom: 0.75rem;
+        padding: 0.25rem 0;
+        /* Touch spacing */
+    }
+
+    /* 8. ADJUST GLOBAL PADDING */
+    section {
+        padding: 3rem 1rem;
+        /* Consistent section breathing room */
+    }
+
+    /* 9. MARKETING PAGE SPECIFIC */
+    /* Key Metrics - Smaller */
+    .merged-stats-card {
+        padding: 1.5rem;
+        gap: 1.5rem;
+        flex-direction: column;
+        /* Stack them */
+        align-items: center;
+        /* Center them */
+    }
+
+    .stat-group {
+        justify-content: center;
+        /* Center the icon vs text group */
+        width: 100%;
+        margin-bottom: 0;
+        gap: 1rem;
+    }
+
+    .stat-icon {
+        width: 50px !important;
+        height: 50px !important;
+        padding: 10px !important;
+    }
+
+    .stat-value {
+        font-size: 1.75rem !important;
+        /* Smaller text */
+    }
+
+    .stat-label {
+        font-size: 0.9rem !important;
+    }
+
+    /* Products Slider - Mobile Optimization */
+    .products-slider {
+        padding: 1rem 0;
+        /* Less padding */
+        gap: 1rem;
+    }
+
+    .product-card {
+        min-width: 280px;
+        /* Reduced from 500px */
+        max-width: 320px;
+        flex-direction: column;
+        /* Stack image on top of text */
+        padding: 1.25rem;
+        align-items: center;
+        /* Center align items */
+        text-align: center;
+    }
+
+    .product-image-side {
+        width: 140px;
+        height: 140px;
+        margin-bottom: 1rem;
+    }
+
+    .product-content {
+        text-align: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .product-btn {
+        width: 100%;
+        text-align: center;
+        margin-top: 0.5rem;
+        align-self: center;
+    }
 }

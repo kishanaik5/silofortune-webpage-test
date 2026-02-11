@@ -299,7 +299,6 @@ async function fetchJobs() {
                             <span>💼 ${job.type || job.employment_type}</span>
                             <span>💰 ${job.salary_range}</span>
                         </div>
-                        ${shortDesc ? `<div class="job-description" style="margin-top: 1rem; color: #555; white-space: pre-wrap; font-size: 0.95rem; overflow: hidden; height: 3em;">${shortDesc}</div>` : ''}
                     </div>
                     <a href="job-details.html?job_id=${job.id}" class="btn btn-outline" style="align-self: flex-start; margin-top: 1rem;">Read More</a>
                 `;
