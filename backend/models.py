@@ -49,5 +49,25 @@ class Blog(Base):
     author = Column(String, default="Silo Fortune Team")
     category = Column(String, default="General")
     image_emoji = Column(String, default="📝") # e.g. 🐄, 🤖
+    image_url = Column(String, nullable=True) # URL to uploaded image
     is_active = Column(Boolean, default=True)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+class Outlet(Base):
+    __tablename__ = "outlets"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    name = Column(String, nullable=False)
+    region = Column(String, nullable=False)
+    pincode = Column(String, nullable=False)
+    contact = Column(String, nullable=False)
+    is_active = Column(Boolean, default=True)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+class ContactMessage(Base):
+    __tablename__ = "contact_messages"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    name = Column(String, nullable=False)
+    email = Column(String, nullable=False)
+    subject = Column(String, nullable=False)
+    message = Column(Text, nullable=False)
     created_at = Column(DateTime(timezone=True), server_default=func.now())

@@ -1,4 +1,5 @@
-from fastapi import FastAPI, Depends, HTTPException, status, File, UploadFile
+from fastapi import FastAPI, Depends, HTTPException, status, File, UploadFile, Form, Query
+from fastapi.staticfiles import StaticFiles
 from fastapi.security import OAuth2PasswordRequestForm
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
@@ -40,6 +41,13 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Mount uploads directory to serve files statically
+# In a production environment, this would typically be handled by Nginx or S3
+uploads_dir = "uploads"
+if not os.path.exists(uploads_dir):
+    os.makedirs(uploads_dir)
+app.mount("/uploads", StaticFiles(directory=uploads_dir), name="uploads")
 
 # Startup Event
 @app.on_event("startup")
@@ -90,6 +98,17 @@ def register_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     )
     db.add(new_user)
     db.commit()
+    db.refresh(new_user)
+    return auth.create_access_token(data={"sub": new_user.email, "role": new_user.role})
+
+@app.post("/api/upload")
+async def upload_file(file: UploadFile = File(...), current_user: models.User = Depends(auth.get_current_active_user)):
+    file_location = f"{uploads_dir}/{uuid.uuid4()}_{file.filename}"
+    with open(file_location, "wb+") as file_object:
+        shutil.copyfileobj(file.file, file_object)
+    
+    # Return relative URL
+    return {"url": f"/uploads/{os.path.basename(file_location)}"}
     db.refresh(new_user)
     logger.info(f"New user registered successfully: {user.email}")
 
@@ -147,13 +166,14 @@ def update_job(job_id: str, job_update: schemas.JobCreate, db: Session = Depends
 # --- Applicant Routes ---
 @app.post("/api/apply", response_model=schemas.Applicant)
 async def apply_for_job(
-    full_name: str,
-    email: str,
-    phone: str,
-    linkedin_url: Optional[str] = None,
-    job_id: Optional[str] = None,
+    full_name: str = Form(...),
+    email: str = Form(...),
+    phone: str = Form(...),
+    linkedin_url: Optional[str] = Form(None),
+    job_id: Optional[str] = Form(None),
     resume: UploadFile = File(...),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: models.User = Depends(auth.get_current_active_user)
 ):
     # MIME Validation
     if resume.content_type != "application/pdf":
@@ -189,10 +209,25 @@ def read_applicants(skip: int = 0, limit: int = 100, db: Session = Depends(get_d
     applicants = db.query(models.Applicant).offset(skip).limit(limit).all()
     return applicants
 
+
 # --- Blog Routes ---
 @app.get("/api/blogs", response_model=List[schemas.Blog])
-def read_blogs(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    blogs = db.query(models.Blog).filter(models.Blog.is_active == True).order_by(models.Blog.created_at.desc()).offset(skip).limit(limit).all()
+def read_blogs(
+    skip: int = 0, 
+    limit: int = 100, 
+    category: List[str] = Query(None), 
+    exclude_category: List[str] = Query(None),
+    db: Session = Depends(get_db)
+):
+    query = db.query(models.Blog).filter(models.Blog.is_active == True)
+    
+    if category:
+        query = query.filter(models.Blog.category.in_(category))
+    
+    if exclude_category:
+        query = query.filter(models.Blog.category.notin_(exclude_category))
+        
+    blogs = query.order_by(models.Blog.created_at.desc()).offset(skip).limit(limit).all()
     return blogs
 
 @app.post("/api/blogs", response_model=schemas.Blog)
@@ -238,3 +273,72 @@ def update_blog(blog_id: str, blog_update: schemas.BlogCreate, db: Session = Dep
     db.commit()
     db.refresh(db_blog)
     return db_blog
+# --- Outlet Routes ---
+@app.get("/api/outlets", response_model=List[schemas.Outlet])
+def read_outlets(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    outlets = db.query(models.Outlet).filter(models.Outlet.is_active == True).offset(skip).limit(limit).all()
+    return outlets
+
+@app.get("/api/outlets/regions", response_model=List[str])
+def read_outlet_regions(db: Session = Depends(get_db)):
+    regions = db.query(models.Outlet.region).distinct().all()
+    return [r[0] for r in regions]
+
+@app.post("/api/outlets", response_model=schemas.Outlet)
+def create_outlet(outlet: schemas.OutletCreate, db: Session = Depends(get_db), current_user: models.User = Depends(auth.get_current_active_user)):
+    auth.check_admin_role(current_user)
+    db_outlet = models.Outlet(**outlet.dict())
+    db.add(db_outlet)
+    db.commit()
+    db.refresh(db_outlet)
+    return db_outlet
+
+@app.get("/api/outlets/{outlet_id}", response_model=schemas.Outlet)
+def read_outlet(outlet_id: str, db: Session = Depends(get_db)):
+    try:
+        outlet = db.query(models.Outlet).filter(models.Outlet.id == uuid.UUID(outlet_id), models.Outlet.is_active == True).first()
+        if outlet is None:
+            raise HTTPException(status_code=404, detail="Outlet not found")
+        return outlet
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Invalid Outlet ID format")
+
+@app.delete("/api/outlets/{outlet_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_outlet(outlet_id: str, db: Session = Depends(get_db), current_user: models.User = Depends(auth.get_current_active_user)):
+    auth.check_admin_role(current_user)
+    outlet = db.query(models.Outlet).filter(models.Outlet.id == uuid.UUID(outlet_id)).first()
+    if outlet is None:
+        raise HTTPException(status_code=404, detail="Outlet not found")
+    
+    db.delete(outlet)
+    db.commit()
+    return
+
+@app.put("/api/outlets/{outlet_id}", response_model=schemas.Outlet)
+def update_outlet(outlet_id: str, outlet_update: schemas.OutletCreate, db: Session = Depends(get_db), current_user: models.User = Depends(auth.get_current_active_user)):
+    auth.check_admin_role(current_user)
+    db_outlet = db.query(models.Outlet).filter(models.Outlet.id == uuid.UUID(outlet_id)).first()
+    if db_outlet is None:
+        raise HTTPException(status_code=404, detail="Outlet not found")
+    
+    for key, value in outlet_update.dict().items():
+        setattr(db_outlet, key, value)
+    
+    db.commit()
+    db.refresh(db_outlet)
+    return db_outlet
+# --- Contact Message Routes ---
+@app.post("/api/contact", response_model=schemas.ContactMessage)
+def submit_contact_message(message: schemas.ContactMessageCreate, db: Session = Depends(get_db)):
+    db_message = models.ContactMessage(**message.dict())
+    db.add(db_message)
+    db.commit()
+    db.refresh(db_message)
+    logger.info(f"New contact message from: {message.email}")
+    return db_message
+
+@app.get("/api/contact", response_model=List[schemas.ContactMessage])
+def read_contact_messages(skip: int = 0, limit: int = 100, db: Session = Depends(get_db), current_user: models.User = Depends(auth.get_current_active_user)):
+    auth.check_admin_role(current_user)
+    messages = db.query(models.ContactMessage).order_by(models.ContactMessage.created_at.desc()).offset(skip).limit(limit).all()
+    return messages

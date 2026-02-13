@@ -138,7 +138,7 @@
                              <td>${app.phone}</td>
                              <td>${app.job_id || 'General'}</td>
                              <td>${app.linkedin_url ? `<a href="${app.linkedin_url}" target="_blank">View Profile</a>` : '-'}</td>
-                             <td><a href="#" onclick="alert('File implementation pending (S3/Local). Key: ${app.resume_s3_key}')" class="resume-link">Download</a></td>
+                             <td><a href="http://localhost:8000/uploads/${app.resume_s3_key}" target="_blank" class="resume-link">Download PDF</a></td>
                          `;
                         tbody.appendChild(tr);
                     });

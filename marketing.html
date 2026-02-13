@@ -161,112 +161,51 @@
         <!-- Outlets Table -->
         <div class="dashboard-section" id="outlets">
             <h2 class="dashboard-title">🏪 Outlet Network</h2>
-            <div class="data-table-container">
-                <div class="table-header">
-                    <h3 class="table-title">All Outlets</h3>
+
+            <div class="dashboard-card"
+                style="padding: 2rem; background: white; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg);">
+                <div class="table-header"
+                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+                    <h3 class="table-title" style="margin: 0;">All Outlets</h3>
                     <div class="table-filters" style="display: flex; gap: 10px; width: 100%; max-width: 500px;">
                         <select class="filter-select" id="regionFilter"
-                            style="padding: 8px; border: 1px solid #ddd; border-radius: 4px; flex: 1;">
-                            <option value="all">All Regions</option>
-                            <option value="Karnataka">Karnataka</option>
-                            <option value="Maharashtra">Maharashtra</option>
-                            <option value="Gujarat">Gujarat</option>
+                            style="padding: 10px; border: 1px solid var(--color-gray-200); border-radius: var(--radius-md); flex: 1;">
+                            <option value="">All Regions</option>
+                            <!-- Regions will be loaded here -->
                         </select>
                         <input type="text" class="search-input" id="outletSearch" placeholder="Search outlets..."
-                            style="flex: 2;">
+                            style="flex: 2; padding: 10px; border: 1px solid var(--color-gray-200); border-radius: var(--radius-md);">
                     </div>
                 </div>
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Store Name</th>
-                            <th>Region</th>
-                            <th>Pincode</th>
-                            <th>Contact Number</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Salgame Outlet</td>
-                            <td>Hassan</td>
-                            <td>573219</td>
-                            <td><a href="tel:8792291826" style="color: inherit; text-decoration: none;">8792291826</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Arkalgudu Outlet</td>
-                            <td>Arkalgudu</td>
-                            <td>573201</td>
-                            <td><a href="tel:7760773185" style="color: inherit; text-decoration: none;">7760773185</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Sagara Outlet</td>
-                            <td>Sagara</td>
-                            <td>577401</td>
-                            <td><a href="tel:8660954478" style="color: inherit; text-decoration: none;">8660954478</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Jaknahalli Outlet</td>
-                            <td>Pandupura</td>
-                            <td>571434</td>
-                            <td><a href="tel:9141528503" style="color: inherit; text-decoration: none;">9141528503</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Navalgunda Outlet</td>
-                            <td>Navalgunda</td>
-                            <td>582208</td>
-                            <td><a href="tel:7618755165" style="color: inherit; text-decoration: none;">7618755165</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Hassan Office Outlet</td>
-                            <td>Hassan</td>
-                            <td>573201</td>
-                            <td><a href="tel:9148730510" style="color: inherit; text-decoration: none;">9148730510</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Kolar Outlet</td>
-                            <td>Kolar</td>
-                            <td>563101</td>
-                            <td><a href="tel:9900163962" style="color: inherit; text-decoration: none;">9900163962</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Channagiri Outlet</td>
-                            <td>Channagiri</td>
-                            <td>577213</td>
-                            <td><a href="tel:9901484880" style="color: inherit; text-decoration: none;">9901484880</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Kadur Outlet</td>
-                            <td>Kadur</td>
-                            <td>577548</td>
-                            <td><a href="tel:9448072110" style="color: inherit; text-decoration: none;">9448072110</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Kanakapura Outlet</td>
-                            <td>Kanakapura</td>
-                            <td>562117</td>
-                            <td><a href="tel:8095401893" style="color: inherit; text-decoration: none;">8095401893</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Shivamogga Outlet</td>
-                            <td>Shivamogga</td>
-                            <td>577201</td>
-                            <td><a href="tel:9986504470" style="color: inherit; text-decoration: none;">9986504470</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+
+                <div class="data-table-container" style="overflow-x: auto; max-height: 500px; overflow-y: auto;">
+                    <table class="data-table" style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr>
+                                <th
+                                    style="text-align: left; padding: 1rem; border-bottom: 2px solid var(--color-gray-100);">
+                                    Store Name</th>
+                                <th
+                                    style="text-align: left; padding: 1rem; border-bottom: 2px solid var(--color-gray-100);">
+                                    Region</th>
+                                <th
+                                    style="text-align: left; padding: 1rem; border-bottom: 2px solid var(--color-gray-100);">
+                                    Pincode</th>
+                                <th
+                                    style="text-align: left; padding: 1rem; border-bottom: 2px solid var(--color-gray-100);">
+                                    Contact Number</th>
+                            </tr>
+                        </thead>
+                        <tbody id="outlets-preview-container">
+                            <!-- Dynamic content will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
+
+    </div>
     </div>
 
     <footer class="footer">
@@ -279,14 +218,20 @@
                     </div>
                     <p class="footer-tagline">Revolutionizing dairy and agriculture in India.</p>
                     <div class="footer-contact" style="margin-top: 1.5rem;">
-                        <h5 style="color: var(--color-primary); margin-bottom: 0.5rem; font-size: 1.1rem;">Get in touch
+                        <h5 style="color: var(--color-accent); margin-bottom: 0.5rem; font-size: 1.1rem;">Get in
+                            touch
                         </h5>
                         <p style="margin-bottom: 0.25rem;"><a href="mailto:info@silofortune.com"
                                 style="color: inherit; text-decoration: none;">info@silofortune.com</a></p>
                         <p style="margin-bottom: 0.25rem;"><a href="tel:18004197848"
                                 style="color: inherit; text-decoration: none;">1800-419-7848</a></p>
-                        <p style="opacity: 0.8; line-height: 1.5;">2nd Floor, 558, 9th Cross Rd,<br>3rd Phase, J. P.
-                            Nagar,<br>Bengaluru, Karnataka 560025</p>
+                        <p style="opacity: 0.8; line-height: 1.5;">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Silo+Fortune+Pvt+Ltd+2nd+Floor+558+9th+Cross+Rd+3rd+Phase+J.P.Nagar+Bengaluru+Karnataka+560025"
+                                target="_blank" style="color: inherit; text-decoration: none;">
+                                2nd Floor, 558, 9th Cross Rd,<br>3rd Phase, J. P. Nagar,<br>Bengaluru, Karnataka
+                                560025
+                            </a>
+                        </p>
                     </div>
                 </div>
                 <div class="footer-section">
@@ -316,38 +261,38 @@
             <div class="footer-bottom">
                 <p class="footer-copyright">© 2026 Silo Fortune Pvt Ltd. All rights reserved.</p>
                 <div class="footer-social">
-                    <a href="https://www.facebook.com/gausampurna.kannada" class="social-link" target="_blank"
-                        aria-label="Facebook">
-                        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: currentColor;">
+                    <a href="https://www.facebook.com/gausampurna.kannada" target="_blank" class="social-link"
+                        title="Facebook">
+                        <svg style="width: 24px; height: 24px; fill: currentColor;" viewBox="0 0 24 24">
                             <path
                                 d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.15 5.96C15.21 5.96 16.12 6.04 16.12 6.04V8.51H15.01C13.77 8.51 13.38 9.28 13.38 10.07V12.06H16.16L15.72 14.96H13.38V21.96C18.16 21.21 21.82 17.06 21.82 12.06C21.82 6.53 17.32 2.04 12 2.04Z" />
                         </svg>
                     </a>
-                    <a href="https://www.instagram.com/gausampurnaenglish/" class="social-link" target="_blank"
-                        aria-label="Instagram">
-                        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: currentColor;">
+                    <a href="https://www.instagram.com/gausampurnaenglish/" target="_blank" class="social-link"
+                        title="Instagram">
+                        <svg style="width: 24px; height: 24px; fill: currentColor;" viewBox="0 0 24 24">
                             <path
-                                d="M7.8 2H16.2C19.4 2 22 4.6 22 7.8V16.2C22 19.4 19.4 22 16.2 22H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2ZM7.6 4C5.6 4 4 5.6 4 7.6V16.4C4 18.4 5.6 20 7.6 20H16.4C18.4 20 20 18.4 20 16.4V7.6C20 5.6 18.4 4 16.4 4H7.6ZM12 7C14.8 7 17 9.2 17 12C17 14.8 14.8 17 12 17C9.2 17 7 14.8 7 12C7 9.2 9.2 7 12 7ZM12 9C10.3 9 9 10.3 9 12C9 13.7 10.3 15 12 15C13.7 15 15 13.7 15 12C15 10.3 13.7 9 12 9ZM17.25 5.5C17.94 5.5 18.5 6.06 18.5 6.75C18.5 7.44 17.94 8 17.25 8C16.56 8 16 7.44 16 6.75C16 6.06 16.56 5.5 17.25 5.5Z" />
+                                d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z" />
                         </svg>
                     </a>
-                    <a href="https://www.linkedin.com/company/silofortunepvtltd/" class="social-link" target="_blank"
-                        aria-label="LinkedIn">
-                        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: currentColor;">
+                    <a href="https://twitter.com/" target="_blank" class="social-link" title="X (Twitter)">
+                        <svg style="width: 24px; height: 24px; fill: currentColor;" viewBox="0 0 24 24">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/company/silofortunepvtltd/" target="_blank" class="social-link"
+                        title="LinkedIn">
+                        <svg style="width: 24px; height: 24px; fill: currentColor;" viewBox="0 0 24 24">
                             <path
                                 d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17A1.4 1.4 0 0 1 15.71 13.57V18.5H18.5M6.88 8.56A1.68 1.68 0 0 0 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19A1.69 1.69 0 0 0 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56M8.27 18.5V10.13H5.5V18.5H8.27Z" />
                         </svg>
                     </a>
-                    <a href="https://twitter.com/" class="social-link" target="_blank" aria-label="X (Twitter)">
-                        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: currentColor;">
+                    <a href="https://www.youtube.com/@gausampurnaenglish-z2b/videos" target="_blank" class="social-link"
+                        title="YouTube">
+                        <svg style="width: 24px; height: 24px; fill: currentColor;" viewBox="0 0 24 24">
                             <path
-                                d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
-                        </svg>
-                    </a>
-                    <a href="https://www.youtube.com/@gausampurnaenglish-z2b/videos" class="social-link" target="_blank"
-                        aria-label="YouTube">
-                        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: currentColor;">
-                            <path
-                                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.498-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                                d="M10 15L15.19 12L10 9V15M21.56 7.17C21.69 7.64 21.78 8.27 21.84 9.07C21.91 9.87 21.94 10.66 21.94 11.5C21.94 12.33 21.91 13.13 21.84 13.93C21.78 14.73 21.69 15.36 21.56 15.83C21.31 16.73 20.61 17.44 19.71 17.69C18.14 18.12 12 18.12 12 18.12C12 18.12 5.86 18.12 4.29 17.69C3.39 17.44 2.69 16.73 2.44 15.83C2.31 15.36 2.22 14.73 2.16 13.93C2.09 13.13 2.06 12.33 2.06 11.5C2.06 10.66 2.09 9.87 2.16 9.07C2.22 8.27 2.31 7.64 2.44 7.17C2.69 6.27 3.39 5.56 4.29 5.31C5.86 4.88 12 4.88 12 4.88 18.14 4.88 19.71 5.31C20.61 5.56 21.31 6.27 21.56 7.17Z" />
                         </svg>
                     </a>
                 </div>

@@ -76,6 +76,7 @@ class BlogBase(BaseModel):
     author: Optional[str] = "Silo Fortune Team"
     category: Optional[str] = "General"
     image_emoji: Optional[str] = "📝"
+    image_url: Optional[str] = None
 
 class BlogCreate(BlogBase):
     pass
@@ -84,6 +85,39 @@ class Blog(BlogBase):
     id: UUID
     created_at: datetime
     is_active: bool
+
+    class Config:
+        from_attributes = True
+# Outlet Schemas
+class OutletBase(BaseModel):
+    name: str
+    region: str
+    pincode: str
+    contact: str
+    is_active: Optional[bool] = True
+
+class OutletCreate(OutletBase):
+    pass
+
+class Outlet(OutletBase):
+    id: UUID
+    created_at: datetime
+
+    class Config:
+        from_attributes = True
+# Contact Message Schemas
+class ContactMessageBase(BaseModel):
+    name: str
+    email: EmailStr
+    subject: str
+    message: str
+
+class ContactMessageCreate(ContactMessageBase):
+    pass
+
+class ContactMessage(ContactMessageBase):
+    id: UUID
+    created_at: datetime
 
     class Config:
         from_attributes = True

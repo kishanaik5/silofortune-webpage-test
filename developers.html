@@ -108,47 +108,21 @@
 
 
         <!-- Developer Blogs -->
-        <div class="dashboard-section">
-            <h2 class="dashboard-title">📝 Developer Blog</h2>
-            <div class="blog-grid">
-                <article class="blog-card">
-                    <div class="blog-card-image">🤖</div>
-                    <div class="blog-card-content">
-                        <div class="blog-card-meta"><span>Jan 15, 2026</span><span>AI/ML</span></div>
-                        <h3 class="blog-card-title">Building AI Models for Cattle Disease Detection</h3>
-                        <p class="blog-card-excerpt">How we trained our computer vision models to detect cattle diseases
-                            with 95% accuracy.</p>
-                        <div class="blog-card-author">
-                            <div class="author-avatar">AK</div><span class="author-name">Arun Kumar</span>
-                        </div>
-                    </div>
-                </article>
-                <article class="blog-card">
-                    <div class="blog-card-image">📊</div>
-                    <div class="blog-card-content">
-                        <div class="blog-card-meta"><span>Jan 8, 2026</span><span>Data</span></div>
-                        <h3 class="blog-card-title">Scaling Our Data Pipeline to 10M+ Records</h3>
-                        <p class="blog-card-excerpt">Our journey from handling thousands to millions of dairy farm data
-                            points daily.</p>
-                        <div class="blog-card-author">
-                            <div class="author-avatar">PS</div><span class="author-name">Priya Singh</span>
-                        </div>
-                    </div>
-                </article>
-                <article class="blog-card">
-                    <div class="blog-card-image">📱</div>
-                    <div class="blog-card-content">
-                        <div class="blog-card-meta"><span>Dec 28, 2025</span><span>Mobile</span></div>
-                        <h3 class="blog-card-title">Building Offline-First Mobile Apps for Rural India</h3>
-                        <p class="blog-card-excerpt">Design patterns for apps that work seamlessly in areas with poor
-                            connectivity.</p>
-                        <div class="blog-card-author">
-                            <div class="author-avatar">RN</div><span class="author-name">Rahul Nair</span>
-                        </div>
-                    </div>
-                </article>
+        <div class="dashboard-section" style="position: relative;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <h2 class="dashboard-title" style="margin-bottom: 0;">📝 Developer Blog</h2>
+                <button onclick="window.location.href='blog-form.html?type=developer'"
+                    class="btn btn-primary admin-only" style="display: none; padding: 0.5rem 1rem; font-size: 0.9rem;">+
+                    New Post</button>
+            </div>
+
+            <div id="dev-blog-grid" class="blog-grid">
+                <!-- Dynamic Content Loaded Here -->
+                <p style="grid-column: 1/-1; text-align: center; color: var(--color-gray-500);">Loading developer
+                    insights...</p>
             </div>
         </div>
+    </div>
     </div>
 
     <footer class="footer">
@@ -167,8 +141,12 @@
                                 style="color: inherit; text-decoration: none;">info@silofortune.com</a></p>
                         <p style="margin-bottom: 0.25rem;"><a href="tel:18004197848"
                                 style="color: inherit; text-decoration: none;">1800-419-7848</a></p>
-                        <p style="opacity: 0.8; line-height: 1.5;">2nd Floor, 558, 9th Cross Rd,<br>3rd Phase, J. P.
-                            Nagar,<br>Bengaluru, Karnataka 560025</p>
+                        <p style="opacity: 0.8; line-height: 1.5;">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Silo+Fortune+Pvt+Ltd+2nd+Floor+558+9th+Cross+Rd+3rd+Phase+J.P.Nagar+Bengaluru+Karnataka+560025"
+                                target="_blank" style="color: inherit; text-decoration: none;">
+                                2nd Floor, 558, 9th Cross Rd,<br>3rd Phase, J. P. Nagar,<br>Bengaluru, Karnataka 560025
+                            </a>
+                        </p>
                     </div>
                 </div>
                 <div class="footer-section">
@@ -236,7 +214,7 @@
             </div>
         </div>
     </footer>
-    <script src="script.js"></script>
+    <script src="script.js?v=debug2"></script>
 </body>
 
 </html>
